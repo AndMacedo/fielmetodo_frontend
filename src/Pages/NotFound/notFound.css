@@ -1,0 +1,32 @@
+.notFound {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: #343a40;
+  color: white;
+  padding: 15em 0;
+}
+.errorCode {
+  font-size: 2.3em;
+}
+.number {
+  font-size: 7em;
+}
+.rightError {
+  padding-left: 4em;
+  text-align: left;
+  font-size: 1.3em;
+}
+.oops {
+  padding-bottom: 1.3em;
+}
+.pageNotFound {
+  padding-bottom: 1.3em;
+}
+.takeMeBackButton {
+  color: #343a40;
+  background-color: #ffff;
+  text-decoration: none;
+  padding: 0.4em 1em;
+}

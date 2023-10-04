@@ -1,0 +1,71 @@
+.aboutUs {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 2em 7em;
+}
+.aboutUs h4 {
+  opacity: 70%;
+  padding-bottom: 1em;
+}
+.aboutUs h2 {
+  font-size: 3.2em;
+  font-weight: 200;
+  padding-bottom: 0.2em;
+}
+.aboutUs hr {
+  width: 4em;
+  color: white;
+  margin: auto;
+}
+.aboutUs p {
+  padding: 1em 15em;
+  font-size: 0.9em;
+}
+.aboutUs img {
+  width: 100%;
+  padding-bottom: 1em;
+}
+.ourTeam {
+  background-color: #4f5962;
+  color: #ffff;
+  text-align: center;
+  padding: 2.5em 5em;
+}
+.ourTeam h3 {
+  font-size: 3em;
+  padding-bottom: 0.3em;
+}
+.ourTeam hr {
+  width: 5em;
+  margin: auto;
+}
+.ourTeam p {
+  padding: 2em 15em;
+}
+.team {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.teamMember {
+  padding: 0.5em;
+}
+.teamMember img {
+  width: 90%;
+}
+.role {
+  font-size: 0.85em;
+  padding-top: 0.15em;
+}
+.CustomSolutions {
+  background-color: #343a40;
+  color: white;
+  padding: 2.5em 20em 3em;
+}
+.CustomSolutions h4 {
+  opacity: 70%;
+}
+.CustomSolutions h2 {
+  font-size: 2em;
+  padding: 0.4em 0 0.8em;
+}

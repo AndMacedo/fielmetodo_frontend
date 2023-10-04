@@ -1,0 +1,107 @@
+.homepage {
+  background-size: cover;
+  height: 50em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 4em;
+}
+.imageText {
+  background-color: rgb(204, 204, 204, 0.5);
+  border-radius: 15px;
+  padding: 1.5em 2em;
+  color: #343a40;
+}
+.title {
+  font-size: 3em;
+  font-weight: 500;
+}
+.homepageBody {
+  padding: 1em;
+  font-weight: 100;
+}
+.imageButtons {
+  margin-top: 1em;
+}
+.imageButtons a {
+  text-decoration: none;
+  margin: 0.5em;
+  padding: 0.8em 1em;
+}
+.aboutusbutton {
+  color: #343a40;
+  background-color: #ddddda;
+}
+.aboutusbutton:hover {
+  background-color: #ffffff;
+}
+.contactusbutton {
+  color: rgb(255, 255, 255, 0.7);
+  background-color: #343a40;
+}
+.contactusbutton:hover {
+  color: rgb(255, 255, 255);
+}
+.ourservices {
+  background-color: #4f5962;
+  color: #ffffff;
+  text-align: center;
+  padding: 3em;
+}
+.firstTitle {
+  padding: 0 0 2em;
+  opacity: 70%;
+  font-size: 1.1em;
+  font-weight: 100;
+}
+.mainTitle {
+  font-size: 1.9em;
+}
+.secondTitle {
+  padding: 2em;
+  font-size: 1.1em;
+  opacity: 80%;
+  font-weight: 100;
+}
+.allservices {
+  display: flex;
+  padding: 0 2em;
+  justify-content: space-evenly;
+}
+.service {
+  padding: 0 1em;
+  width: 25%;
+}
+.inBubble {
+  background-color: #343a40;
+  padding: 4em;
+  border-radius: 50%;
+}
+.serviceTittle {
+  margin: 1em;
+  font-size: 1.6em;
+  font-weight: 600;
+  height: 14%;
+}
+.serviceText {
+  font-size: 1.1em;
+}
+.outsource {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 3.5em 7em;
+}
+.outsource div {
+  font-size: 1.2em;
+  opacity: 70%;
+}
+.outsource h2 {
+  padding: 0.5em 0;
+  font-size: 3em;
+  font-weight: 600;
+}
+.outsource p {
+  font-size: 1.1em;
+}

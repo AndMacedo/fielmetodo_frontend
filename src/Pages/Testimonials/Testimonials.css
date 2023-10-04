@@ -1,0 +1,50 @@
+.testimonials {
+  text-align: center;
+  background-color: #343a40;
+  color: white;
+}
+.testimonialsTittle {
+  padding: 2em 0 1em;
+  opacity: 70%;
+  font-size: 1.1em;
+}
+.testimonialsMainTittle {
+  font-size: 3.8em;
+  padding-bottom: 0.2em;
+}
+.testimonials hr {
+  width: 2.5em;
+  margin: auto;
+  color: white;
+}
+.ourClients {
+  padding-top: 1em;
+}
+.comments {
+  padding: 3em 5em;
+}
+.testimonial {
+  display: flex;
+  padding: 1.2em 0;
+}
+.testimonial img {
+  border-radius: 100%;
+}
+.persona {
+  text-align: left;
+  padding: 0 2em;
+  min-width: 20%;
+  margin: auto;
+}
+.name {
+  font-size: 1.3em;
+}
+.profession {
+  font-size: 0.8em;
+  padding: 1em 0;
+}
+.commentary {
+  text-align: left;
+  align-items: center;
+  align-self: center;
+}

@@ -1,0 +1,9 @@
+.footer {
+  background-color: #495057;
+  padding: 3em;
+  text-align: center;
+}
+.footerlogo {
+  width: 5em;
+  cursor: pointer;
+}
