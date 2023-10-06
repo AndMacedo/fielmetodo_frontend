@@ -19,7 +19,7 @@ const homepage = () => {
         <div className="imageText">
           <h1 className="title">Combining technology & logistics</h1>
           <h4 className="homepageBody">
-            Our focus is on delivering Logistics solutions for Smal and Medium
+            Our focus is on delivering Logistics solutions for Small and Medium
             Companies. With a large expertise in the field, we provide
             comprehensive and easy solutions to help your business reach the
             next level. Our experienced professionals use the most efficient
@@ -89,9 +89,9 @@ const homepage = () => {
             />
             <h3 className="serviceTittle">Logistics Process Optimization</h3>
             <p className="serviceText">
-              If there is Logistics, we can improve it. Allying our IT and
-              Logistics expertise, we deliver solutions for companies escalate
-              their productivity.
+              If there is Logistics, we can improve it. Using our expertise, we
+              deliver solutions for companies to escalate their productivity,
+              both in the warehouse and with delivery.
             </p>
           </div>
         </div>
@@ -104,12 +104,13 @@ const homepage = () => {
         <p>
           At Fielmetodo, we are equipped to provide you with professional and
           affordable solutions for your Company needs. Our team of experts have
-          the combined knowledge with Logistics, IT and New Markets Launches,
-          providing them with the expertise to develop tailored plans for small
-          or medium companies. We understand how important it is for businesses
-          to stay on top of their tech and logistics infrastructure in order to
-          remain competitive - that’s why our mission is to deliver long-term
-          strategies and support services that guarantee results every time.
+          a combined knowledge of general business, Logistics, IT and New
+          Markets development, providing us with the expertise to develop
+          tailored plans for small or medium companies. We understand how
+          important it is for businesses to stay on top of their tech and
+          logistics infrastructure to remain competitive - that’s why our
+          mission is to deliver long-term strategies and support services that
+          guarantee results every time.
         </p>
       </div>
       <ContactUs />

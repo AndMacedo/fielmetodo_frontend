@@ -105,3 +105,19 @@
 .outsource p {
   font-size: 1.1em;
 }
+
+@media only screen and (max-width: 900px) {
+  .allservices {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .service {
+    padding: 1em 1em;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .allservices {
+    display: block;
+  }
+}

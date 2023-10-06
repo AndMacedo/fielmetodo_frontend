@@ -56,17 +56,31 @@
   padding-bottom: 4em;
 }
 .map {
-  width: 60em;
+  width: 80%;
   height: 18em;
 }
-#notFilled{
-   border: 1px red solid;;
+#notFilled {
+  border: 1px red solid;
 }
-.emailNotSend{
+.emailNotSend {
   text-align: center;
   margin-top: 1em;
 }
-.emailSend{  
+.emailSend {
   text-align: center;
   margin-top: 1em;
+}
+
+@media only screen and (max-width: 700px) {
+  .contactUs {
+    display: block;
+    text-align: center;
+  }
+  .contact {
+    padding-bottom: 2em;
+  }
+  .contactUsForm {
+    margin: auto;
+    width: 18em;
+  }
 }

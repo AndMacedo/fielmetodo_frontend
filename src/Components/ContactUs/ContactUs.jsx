@@ -1,69 +1,117 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./ContactUs.css";
-import axios from "axios"
+import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
+import env from "react-dotenv";
 
 const ContactUs = () => {
-  const [FirstName, setFirstName] =useState("")
-  const [LastName, setLastName] =useState("")
-  const [Email, setEmail] =useState("")
-  const [Phone, setPhone] =useState("")
-  const [Notes, setNotes] =useState("")
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [Notes, setNotes] = useState("");
 
-  const [emailSent, setEmailSent] =useState(false)
-  const [emailNotSent, setEmailNotSent] =useState(false)
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailNotSent, setEmailNotSent] = useState(false);
 
-  const [FirstNameId, setFirstNameId] =useState("")
-  const [LastNameId, setLastNameId] =useState("")
-  const [EmailId, setEmailId] =useState("")
-  const [NotesId, setNotesId] =useState("")
+  const [FirstNameId, setFirstNameId] = useState("");
+  const [LastNameId, setLastNameId] = useState("");
+  const [EmailId, setEmailId] = useState("");
+  const [NotesId, setNotesId] = useState("");
 
-  const info ={
-    "FirstName":`${FirstName}`,
-    "LastName":`${LastName}`,
-    "Email":`${Email}`,
-    "Phone":`${Phone}`,
-    "Notes":`${Notes}`
+  const recaptcha = useRef();
+
+  const [emailError, setEmailError] = useState(null);
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
   }
-  const handleSubmit =() =>{
-    console.log(info)
-    if(FirstName!=="" & LastName!=="" & Email!=="" & Notes!==""){
-      axios
-      .post("http://localhost:5000/sendemail", JSON.parse(info))
-      .catch((error) => {
-        console.error(
-          error
-        );
-      })
-      setFirstNameId("")
-      setLastNameId("")
-      setEmailId("")
-      setNotesId("")
-      setEmailSent(true)
-      setEmailNotSent(false) 
-      
-    }else{
-      if(FirstName==""){
-        setFirstNameId("notFilled")
-      }else{setFirstNameId("")}
-      if(LastName==""){
-        setLastNameId("notFilled")
-      }else{setLastNameId("")}
-      if(Email==""){
-        setEmailId("notFilled")
-      }else{setEmailId("")}
-      if(Notes==""){
-        setNotesId("notFilled")
-      }else{setNotesId("")} 
+  const handleChange = (event) => {
+    if (!isValidEmail(event.target.value)) {
+      setEmailError("Email is invalid");
+    } else {
+      setEmailError(null);
+    }
+    setEmail(event.target.value);
+  };
+  async function handleSubmit() {
+    const info = {
+      FirstName: `${FirstName}`,
+      LastName: `${LastName}`,
+      Email: `${Email}`,
+      Phone: `${Phone}`,
+      Notes: `${Notes}`,
+    };
+    const captchaValue = recaptcha.current.getValue();
 
-      setEmailNotSent(true) 
-      setEmailSent(false)     
+    if (!captchaValue) {
+      alert("Please verify the reCAPTCHA!");
+    } else {
+      const res = await fetch("http://localhost:5000/verify", {
+        mode: "same-origin",
+        method: "POST",
+        body: JSON.stringify({ captchaValue }),
+
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      const data = await res.json();
+      if (data.success) {
+        if (
+          (FirstName !== "") &
+          (LastName !== "") &
+          (Email !== "") &
+          (Notes !== "") &
+          (emailError == null)
+        ) {
+          axios
+            .post("http://localhost:5000/sendemail", JSON.stringify(info))
+            .catch((error) => {
+              console.error(error);
+            });
+          setFirstNameId("");
+          setLastNameId("");
+          setEmailId("");
+          setNotesId("");
+          setEmailSent(true);
+          setEmailNotSent(false);
+        } else {
+          if (FirstName == "") {
+            setFirstNameId("notFilled");
+          } else {
+            setFirstNameId("");
+          }
+          if (LastName == "") {
+            setLastNameId("notFilled");
+          } else {
+            setLastNameId("");
+          }
+          if (Email == "") {
+            setEmailId("notFilled");
+          } else {
+            setEmailId("");
+          }
+          if (Notes == "") {
+            setNotesId("notFilled");
+          } else {
+            setNotesId("");
+          }
+
+          setEmailNotSent(true);
+          setEmailSent(false);
+        }
+
+        alert("Form submission successful!");
+      } else {
+        alert("reCAPTCHA validation failed!");
+      }
     }
   }
   return (
     <div className="contactMap" id="contactUs">
       <div className="contactUs">
-        <div>
+        <div className="contact">
           <div className="contacts">Contacts</div>
           <div className="question">Have a question?</div>
           <div className="contactText">
@@ -71,7 +119,7 @@ const ContactUs = () => {
             <br /> We are always here for you!
           </div>
         </div>
-        <div>
+        <div className="contact">
           <div className="infoTittle">Email</div>
           <div className="infoText">hello@fielmetodo.pt</div>
           <div className="info">
@@ -86,19 +134,74 @@ const ContactUs = () => {
           </div>
         </div>
         <form className="contactUsForm">
-          <input type="text" id={FirstNameId} placeholder="First Name*" className="input" value={FirstName} onChange={event=>setFirstName(event.target.value)}></input>
+          <input
+            type="text"
+            id={FirstNameId}
+            placeholder="First Name*"
+            className="input"
+            value={FirstName}
+            onChange={(event) => setFirstName(event.target.value)}
+          ></input>
           <hr className="breakline" />
-          <input type="text" id={LastNameId} placeholder="Last Name*" className="input" value={LastName} onChange={event=>setLastName(event.target.value)}></input>
+          <input
+            type="text"
+            id={LastNameId}
+            placeholder="Last Name*"
+            className="input"
+            value={LastName}
+            onChange={(event) => setLastName(event.target.value)}
+          ></input>
           <hr className="breakline" />
-          <input type="text" id={EmailId} placeholder="Email Address*" className="input" value={Email} onChange={event=>setEmail(event.target.value)}></input>
+          <input
+            type="text"
+            id={EmailId}
+            placeholder="Email Address*"
+            className="input"
+            value={Email}
+            onChange={handleChange}
+          ></input>
           <hr className="breakline" />
-          <input type="text" placeholder="Phone" className="input" value={Phone} onChange={event=>setPhone(event.target.value)}></input>
+          <input
+            type="text"
+            placeholder="Phone"
+            className="input"
+            value={Phone}
+            onChange={(event) => setPhone(event.target.value)}
+          ></input>
           <hr className="breakline" />
-          <input type="text"id={NotesId}  placeholder="Notes*" className="input" value={Notes} onChange={event=>setNotes(event.target.value)}></input>
-          <hr className="breakline"/>
-          <input type="button" value="SUBMIT" className="submitButton" onClick={handleSubmit} />
-          {emailNotSent===true?<div className="emailNotSend">*Fill in the mandatory inputs in order to Submit</div>:null}
-          {emailSent===true?<div className="emailSend">Contact send! <br/>We will get back to you as soon as possible</div>:null}
+          <input
+            type="text"
+            id={NotesId}
+            placeholder="Notes*"
+            className="input"
+            value={Notes}
+            onChange={(event) => setNotes(event.target.value)}
+          ></input>
+          <hr className="breakline" />
+          <ReCAPTCHA
+            sitekey="6LdrXHwoAAAAAL_dPxdXwPJiMO3S5gj7vTOnGSMy"
+            size="compact"
+            ref={recaptcha}
+          />
+          <input
+            type="button"
+            value="SUBMIT"
+            className="submitButton"
+            onClick={handleSubmit}
+          />
+          {emailNotSent === true ? (
+            <div className="emailNotSend">
+              *Fill in the mandatory inputs in order to Submit
+            </div>
+          ) : emailError ? (
+            <div className="emailNotSend">Fill in with a valid email</div>
+          ) : null}
+          {emailSent === true ? (
+            <div className="emailSend">
+              Contact send! <br />
+              We will get back to you as soon as possible
+            </div>
+          ) : null}
         </form>
       </div>
       <div className="mapDiv">

@@ -31,6 +31,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  margin-right: 1em;
 }
 .contactus {
   text-decoration: none;
@@ -38,8 +39,51 @@
   padding: 0.8em 1em;
   background-color: #343a40;
   display: flex;
-  margin-right: 2em;
+  margin-right: 1em;
 }
 .contactus:hover {
   color: #ffffff;
+}
+.burgermenu {
+  display: none;
+}
+@media only screen and (max-width: 900px) {
+  @keyframes slideIn {
+    0% {
+      transform: translate(20em, 0px);
+    }
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+  .header {
+    justify-content: space-between;
+  }
+  #links {
+    display: none;
+  }
+  .burgermenu {
+    display: block;
+  }
+  .burguerLinks {
+    background-color: #343a40;
+    display: grid;
+    height: 100%;
+    width: 35%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 2em 0 0 3em;
+    grid-template-rows: 12% 12% 12% 12% 12%;
+    z-index: 9999;
+    animation-name: slideIn;
+    animation-duration: 1s;
+  }
+  .burguerLinks a {
+    color: white;
+    text-decoration: none;
+  }
+  .cross {
+    height: 40%;
+  }
 }
