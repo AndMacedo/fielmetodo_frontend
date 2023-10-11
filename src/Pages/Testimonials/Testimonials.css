@@ -47,8 +47,21 @@
   text-align: left;
   align-items: center;
   align-self: center;
+  min-width: 75%;
+}
+.seeMore{
+  font-size: 0.7em;
 }
 
+@media only screen and (max-width:600px) {
+  .commentary{
+    text-align: center;
+    padding-bottom: 2em;
+  }
+  .testimonialsMainTittle{
+    font-size: 2.5em;
+  }
+}
 @media only screen and (max-width: 900px) {
   .comments {
     padding: 1em 2em;
@@ -62,5 +75,8 @@
   .testimonial img {
     min-width: 7em;
     max-height: 7em;
+  }
+  .commentary{
+    min-width: 40%;
   }
 }

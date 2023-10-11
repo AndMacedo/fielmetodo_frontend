@@ -26,6 +26,7 @@
   margin-top: 1em;
 }
 .imageButtons a {
+  text-wrap: nowrap;
   text-decoration: none;
   margin: 0.5em;
   padding: 0.8em 1em;
@@ -119,5 +120,23 @@
 @media only screen and (max-width: 700px) {
   .allservices {
     display: block;
+  }
+  .outsource{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 550px){
+  .ourservices{
+    padding: 0;
+  }
+  .title{
+    font-size: 2.4em;
+  }
+  .outsource{
+    padding: 2.5em 3.5em
+  }
+  .outsource h2{
+    font-size: 2.3em;
   }
 }

@@ -5,11 +5,8 @@
   display: flex;
   justify-content: space-around;
 }
-.logo {
-  margin: 1em;
-}
 .logoImage {
-  height: 5em;
+  height: 7em;
 }
 .leftlinks {
   display: flex;
@@ -81,9 +78,20 @@
   }
   .burguerLinks a {
     color: white;
-    text-decoration: none;
+    text-decoration: none;    
+    align-self: center;
+    padding: 0.5em;
   }
   .cross {
-    height: 40%;
+    padding: 0.5em;
+    align-self: center;
+    height: 60%;
+  }
+}
+
+@media only screen and (max-width:500px){
+  .burguerLinks{
+    padding: 2em 0 0 0.7em;
+    font-size: 0.85em;
   }
 }

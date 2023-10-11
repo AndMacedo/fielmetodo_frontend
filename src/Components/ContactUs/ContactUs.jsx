@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import "./ContactUs.css";
 import axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
-import env from "react-dotenv";
 
 const ContactUs = () => {
   const [FirstName, setFirstName] = useState("");
@@ -47,17 +46,9 @@ const ContactUs = () => {
     if (!captchaValue) {
       alert("Please verify the reCAPTCHA!");
     } else {
-      const res = await fetch("http://localhost:5000/verify", {
-        mode: "same-origin",
-        method: "POST",
-        body: JSON.stringify({ captchaValue }),
-
-        headers: {
-          "content-type": "application/json",
-        },
-      });
-      const data = await res.json();
-      if (data.success) {
+      const res = await axios.post("https://fielmetodo-backend.cyclic.app/verify", {captchaValue})
+      console.log(res.data.success)
+      if (res.data.success) {
         if (
           (FirstName !== "") &
           (LastName !== "") &
@@ -66,7 +57,7 @@ const ContactUs = () => {
           (emailError == null)
         ) {
           axios
-            .post("http://localhost:5000/sendemail", JSON.stringify(info))
+            .post("https://fielmetodo-backend.cyclic.app/sendemail", info)
             .catch((error) => {
               console.error(error);
             });
@@ -178,11 +169,17 @@ const ContactUs = () => {
             onChange={(event) => setNotes(event.target.value)}
           ></input>
           <hr className="breakline" />
-          <ReCAPTCHA
+          {window.innerWidth > 700 ?(
+            <ReCAPTCHA
             sitekey="6LdrXHwoAAAAAL_dPxdXwPJiMO3S5gj7vTOnGSMy"
             size="compact"
             ref={recaptcha}
           />
+          ):<ReCAPTCHA
+            sitekey="6LdrXHwoAAAAAL_dPxdXwPJiMO3S5gj7vTOnGSMy"
+            size="normal"
+            ref={recaptcha}
+          />}          
           <input
             type="button"
             value="SUBMIT"
