@@ -2,7 +2,7 @@
 import React from "react";
 import Footer from "./Components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header/header";
+import Header from "./Components/Header/header";
 import HomePage from "./Pages/HomePage/homePage.jsx";
 import NotFound from "./Pages/NotFound/notFound";
 import Testimonials from "./Pages/Testimonials/Testimonials";

@@ -33,7 +33,7 @@ const ContactUs = () => {
     }
     setEmail(event.target.value);
   };
-  async function handleSubmit() {
+  async function handleSubmit(e) {
     const info = {
       FirstName: `${FirstName}`,
       LastName: `${LastName}`,
@@ -41,13 +41,14 @@ const ContactUs = () => {
       Phone: `${Phone}`,
       Notes: `${Notes}`,
     };
-    const captchaValue = recaptcha.current.getValue();
+    e.preventDefault();    
+    const captchaValue = recaptcha.current.getValue();    
+    recaptcha.current.reset();
 
     if (!captchaValue) {
       alert("Please verify the reCAPTCHA!");
     } else {
       const res = await axios.post("https://fielmetodo-backend.cyclic.app/verify", {captchaValue})
-      console.log(res.data.success)
       if (res.data.success) {
         if (
           (FirstName !== "") &
@@ -56,7 +57,7 @@ const ContactUs = () => {
           (Notes !== "") &
           (emailError == null)
         ) {
-          axios
+          await axios
             .post("https://fielmetodo-backend.cyclic.app/sendemail", info)
             .catch((error) => {
               console.error(error);
@@ -171,12 +172,12 @@ const ContactUs = () => {
           <hr className="breakline" />
           {window.innerWidth > 700 ?(
             <ReCAPTCHA
-            sitekey="6LdrXHwoAAAAAL_dPxdXwPJiMO3S5gj7vTOnGSMy"
+            sitekey="6Lc0rKYoAAAAALTJ05ZaO80d5MMN5XyruUia_de_"
             size="compact"
             ref={recaptcha}
           />
           ):<ReCAPTCHA
-            sitekey="6LdrXHwoAAAAAL_dPxdXwPJiMO3S5gj7vTOnGSMy"
+            sitekey="6Lc0rKYoAAAAALTJ05ZaO80d5MMN5XyruUia_de_"
             size="normal"
             ref={recaptcha}
           />}          
