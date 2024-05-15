@@ -6,6 +6,7 @@ import Header from "./Components/Header/header";
 import HomePage from "./Pages/HomePage/homePage.jsx";
 import NotFound from "./Pages/NotFound/notFound";
 import Testimonials from "./Pages/Testimonials/Testimonials";
+import Testimonial from "./Pages/Testimonials/Testimonial";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/:id" element={<Testimonial />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
